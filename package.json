@@ -1,0 +1,39 @@
+{
+  "name": "sample_lambda_authorizer",
+  "version": "0.1.0",
+  "description": "RFC 6750 OAuth2 bearer JSON Web Token (JWT) custom authorizer for AWS API Gateway",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/lambda-local --timeout 300 -l index.js -h handler -e test/event.json",
+    "zip": "mkdir dist && rm -f dist/lambda-oauth2-jwt-authorizer.zip ; zip dist/lambda-oauth2-jwt-authorizer.zip -r *.js *.json .env node_modules/",
+    "bundle": "rm -f custom-authorizer.zip ; zip custom-authorizer.zip -r *.js *.json node_modules/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+"
+  },
+  "keywords": [
+    "oauth2",
+    "jwt",
+    "lambda",
+    "aws",
+    "okta",
+    "api-gateway",
+    "oidc"
+  ],
+  "author": {
+    "name": "Karl McGuinness",
+    "email": "dev@karlmcguinness.com"
+  },
+  "license": "MIT",
+  "bugs": {},
+  "dependencies": {
+    "@okta/jwt-verifier": "0.0.14",
+    "dotenv": "^2.0.0",
+    "jwks-rsa": "^1.3.0",
+    "oauth2-bearer-jwt-handler": "https://github.com/mcguinness/node-oauth2-bearer-jwt-handler.git"
+  },
+  "devDependencies": {
+    "lambda-local": "^1.5.1"
+  }
+}
